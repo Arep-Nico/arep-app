@@ -49,20 +49,17 @@ export class InputData extends Component {
       age: this.state.age
     };
 
-    console.log(user);
-
     Axios
-      .post(`http://localhost:8080/api/v1/users`, { user })
+      .post(`http://localhost:8080/api/v1/users`, user)
       .then(res => {
-        console.log(res);
         if (res.status === 200)
           this.setState({
             name: '',
             lastName: '',
             age: ''
           });
+        this.props.update(true);
       });
-    this.forceUpdate();
   }
 
   render() {

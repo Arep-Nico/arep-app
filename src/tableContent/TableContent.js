@@ -7,9 +7,15 @@ export class TableContent extends Component {
   constructor(props) {
     super(props);
     this.state = { rows: [] }
+    this.update = this.update.bind(this);
+    console.log(props);
   }
 
   componentDidMount() {
+    this.update();
+  }
+
+  update = () => {
     Axios
       .get(`http://localhost:8080/api/v1/users`)
       .then(res => {
